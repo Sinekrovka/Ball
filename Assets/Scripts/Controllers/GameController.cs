@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
         restartScreen.SetActive(false);
         controlls.SetActive(true);
         startScreen.SetActive(false);
+        SpawnerEnemy.Instance.StartSpawn();
         steps = 0;
         textSteps.text = "Steps: " + steps;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemi");

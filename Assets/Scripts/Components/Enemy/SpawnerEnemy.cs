@@ -12,6 +12,12 @@ public class SpawnerEnemy : MonoBehaviour
     [Range(0.1f, 3f)]
     [SerializeField] private float mintimeWaitSpawn;
 
+    public static SpawnerEnemy Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         StartCoroutine(Spawn());
@@ -25,6 +31,11 @@ public class SpawnerEnemy : MonoBehaviour
             maxBoundsSpawn.y + newEnemy.transform.localScale.y / 2, maxBoundsSpawn.z);
         newEnemy.transform.SetParent(BrookController.Instance.GetLastBrook);
         newEnemy.GetComponent<IEnemyMoving>().Moving();
+        StartCoroutine(Spawn());
+    }
+
+    public void StartSpawn()
+    {
         StartCoroutine(Spawn());
     }
 }
